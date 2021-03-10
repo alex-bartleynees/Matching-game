@@ -1,7 +1,6 @@
 var cards = [
     "./images/Bud-Powell.jpg", "./images/Hank-Mobley.jpg", "./images/Herbie-Hancock123.jpg", "./images/Jackie-McLean1234567.jpg", "./images/JohnnyGriffin.jpg", "./images/SonnyRollins.jpg", "./images/TheloniousMonk.jpg", "./images/Wayne-Shorter23.jpg", "./images/Bud-Powell.jpg", "./images/Hank-Mobley.jpg", "./images/Herbie-Hancock123.jpg", "./images/Jackie-McLean1234567.jpg", "./images/JohnnyGriffin.jpg", "./images/SonnyRollins.jpg", "./images/TheloniousMonk.jpg", "./images/Wayne-Shorter23.jpg"]
 
-//var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 var card = document.getElementsByClassName("card");
 for (let i = 0; i < card.length; i++) {
@@ -57,29 +56,41 @@ function addImage () {
 
     this.classList.add("open")
     this.classList.remove("disabled")
-  
+    
     checkMatch();
 
 
 }
-
+var counter = 0;
 function checkMatch() {
+ 
     if (newArray.length == 2 && newArray[0].length == newArray[1].length) {
         newArray = [];
         let div = document.querySelectorAll("div");
+        counter++
+        var moves = document.getElementById("moves")
+        moves.innerHTML = "Moves: " + counter;
+   
         for (let i = 0; i < div.length; i++) {
             let classes = div[i].classList;
             let result = classes.contains("open");
-           // let child = document.querySelector('img')
+           
             if (result) 
                 div[i].classList.add("match")
             div[i].classList.remove("open");
+          
             
         }
         setTimeout(function(){alert("Match!")}, 1000);
     } else if (newArray.length == 2) {
         unmatched();
+        counter++
+        var moves = document.getElementById("moves")
+        moves.innerHTML = "Moves: " + counter;
+       
     }
+  
+
 }
 
 
@@ -91,7 +102,7 @@ function unmatched() {
     for (let i = 0; i < div.length; i++) {
         let classes = div[i].classList;
         let result = classes.contains("open");
-        let child = document.querySelector('img')
+       let child = document.querySelector('img')
         if (result) {
           
             setTimeout(function(){div[i].classList.add("disabled")}, 1000);
