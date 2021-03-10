@@ -8,6 +8,9 @@ for (let i = 0; i < card.length; i++) {
     card[i].addEventListener("click", addImage)
 }
 
+var resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", reset);
+
 function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -114,3 +117,7 @@ function setBackground() {
 }
 
 setBackground();
+
+function reset () {
+    location.reload();
+}
