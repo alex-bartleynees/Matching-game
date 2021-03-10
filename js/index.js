@@ -74,6 +74,7 @@ function checkMatch() {
             if (result) {
                 div[i].classList.add("match")
                 div[i].classList.remove("open");
+                div[i].removeEventListener("click", revealImage);
             }
 
         }
