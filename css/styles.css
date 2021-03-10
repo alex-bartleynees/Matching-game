@@ -11,10 +11,9 @@ h1 {
 
 .container {
     display:grid;
-    grid-template-columns:repeat(4, 1fr) ;
+    grid-template-columns:repeat(4, minmax(50px, 1fr));
     grid-template-rows:auto auto auto auto;
     background-color: grey;
-  
     max-width:100%;
 }
 
@@ -26,8 +25,8 @@ h1 {
     margin: auto;
  
     border: 5px solid grey;
-    width: 250px;
-    height: 250px;
+    width: 15.625rem;
+    height: 15.625rem;
     grid-gap: 8px 8px;
     cursor: pointer;
 }
@@ -35,9 +34,9 @@ h1 {
 .disabled {
 
     background:tomato;
-    width: 250px;
-    height: 250px
-    hover
+    width: 15.625rem;
+    height: 15.625rem;
+    
 
 }
 
@@ -48,31 +47,37 @@ h1 {
 
 .disabled img  {
  
-    width: 250px;
-    height: 250px;
+    width: 15.625;
+    height: 15.625;
    opacity: 0;
   
    
 }
 
 .open img {
-    width: 250px;
-    height: 250px;
+    width: 15.625rem;
+    height: 15.625rem;
    
 }
 
 .match img {
-    width: 250px;
-    height: 250px;
+    width: 15.625rem;
+    height: 15.625rem;
 }
 
 .card .open img {
-    width: 250px;
-    height: 250px;
+    width: 15.625rem;
+    height: 15.625rem;
 }
 
 img {
-    width: 250px;
-    height: 250px;
+    width: 15.625rem;
+    height: 15.625rem;
 }
 
+@media only screen and (max-width: 600px) {
+    img {
+        width: 50px;
+        height: 50px;
+    }
+}
