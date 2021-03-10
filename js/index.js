@@ -4,7 +4,7 @@ var cards = [
 
 var card = document.getElementsByClassName("card");
 for (let i = 0; i < card.length; i++) {
-    card[i].addEventListener("click", addImage)
+    card[i].addEventListener("click", revealImage);
 }
 
 var resetButton = document.getElementById("reset");
@@ -22,23 +22,20 @@ function shuffle(a) {
 
 
 function startGame() {
-    
+
     shuffle(cards);
     var imageIndex = -3;
-    console.log(cards);
     let div = document.querySelectorAll("div");
     for (let i = 0; i < div.length; i++) {
         var img = document.createElement("img");
-        img.src = cards[imageIndex]
-        img.setAttribute("onclick", "myFunction(this)");
-
+        img.src = cards[imageIndex];
+        img.setAttribute("onclick", "getSrc(this)");
         let classes = div[i].classList;
         let result = classes.contains("card");
         if (result == true) {
             div[i].appendChild(img);
         }
         imageIndex++;
-        console.log(imageIndex);
     }
 
 }
@@ -46,81 +43,79 @@ startGame();
 
 var newArray = [];
 
-function myFunction (el) {
+function getSrc(el) {
     var imgSrc = el.src;
     newArray.push(imgSrc);
-    console.log(newArray);
 }
 
-function addImage () {
+function revealImage() {
 
     this.classList.add("open")
     this.classList.remove("disabled")
-    
+
     checkMatch();
 
 
 }
 var counter = 0;
 function checkMatch() {
- 
+
     if (newArray.length == 2 && newArray[0].length == newArray[1].length) {
         newArray = [];
         let div = document.querySelectorAll("div");
         counter++
         var moves = document.getElementById("moves")
         moves.innerHTML = "Moves: " + counter;
-   
+
         for (let i = 0; i < div.length; i++) {
             let classes = div[i].classList;
             let result = classes.contains("open");
-           
-            if (result) 
+
+            if (result) {
                 div[i].classList.add("match")
-            div[i].classList.remove("open");
-          
-            
+                div[i].classList.remove("open");
+            }
+
         }
-        setTimeout(function(){alert("Match!")}, 1000);
+        setTimeout(function () { alert("Match!") }, 1000);
     } else if (newArray.length == 2) {
         unmatched();
         counter++
         var moves = document.getElementById("moves")
         moves.innerHTML = "Moves: " + counter;
-       
+
     }
-  
+
 
 }
 
 
 
 function unmatched() {
-    
- newArray = [];
+
+    newArray = [];
     let div = document.querySelectorAll("div");
     for (let i = 0; i < div.length; i++) {
         let classes = div[i].classList;
         let result = classes.contains("open");
-       let child = document.querySelector('img')
         if (result) {
-          
-            setTimeout(function(){div[i].classList.add("disabled")}, 1000);
+
+            setTimeout(function () { div[i].classList.add("disabled") }, 1000);
             div[i].classList.remove("open");
         }
     }
 }
 
 
-function setBackground() {
+function hideImages() {
     var elements = document.getElementsByClassName("card")
     for (let i = 0; i < elements.length; i++) {
         elements[i].classList.add("disabled");
     }
 }
 
-setBackground();
+hideImages();
 
-function reset () {
+function reset() {
     location.reload();
 }
