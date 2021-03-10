@@ -78,7 +78,7 @@ function checkMatch() {
             }
 
         }
-        setTimeout(function () { alert("Match!") }, 1000);
+        setTimeout(function () { alert("Match!") }, 500);
     } else if (newArray.length == 2) {
         unmatched();
         counter++
@@ -101,7 +101,7 @@ function unmatched() {
         let result = classes.contains("open");
         if (result) {
 
-            setTimeout(function () { div[i].classList.add("disabled") }, 1000);
+            setTimeout(function () { div[i].classList.add("disabled") }, 500);
             div[i].classList.remove("open");
         }
     }
