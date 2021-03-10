@@ -44,15 +44,20 @@ startGame();
 var newArray = [];
 
 function getSrc(el) {
+
     var imgSrc = el.src;
     newArray.push(imgSrc);
+    if (newArray.length > 2) {
+        newArray = [el.src];
+    }
+    console.log(newArray);
 }
 
 function revealImage() {
-
+   
     this.classList.add("open")
     this.classList.remove("disabled")
-
+    
     checkMatch();
 
 
@@ -75,6 +80,7 @@ function checkMatch() {
                 div[i].classList.add("match")
                 div[i].classList.remove("open");
                 div[i].removeEventListener("click", revealImage);
+                
             }
 
         }
