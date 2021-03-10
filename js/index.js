@@ -24,7 +24,7 @@ function shuffle(a) {
 function startGame() {
     
     shuffle(cards);
-    var imageIndex = -2;
+    var imageIndex = -3;
     console.log(cards);
     let div = document.querySelectorAll("div");
     for (let i = 0; i < div.length; i++) {
@@ -110,14 +110,6 @@ function unmatched() {
         }
     }
 }
-/* let classes = div.classList;
- let result = classes.contains("open");
- let child = document.querySelector(".open")
- 
- div.removeChild(child);
- }
- */
-
 
 
 function setBackground() {
