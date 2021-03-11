@@ -3,6 +3,9 @@ let images = [
 
 images = images.concat(images);
 
+let openCards = [];
+
+let counter = 0;
 
 const card = document.getElementsByClassName("card");
 for (let i = 0; i < card.length; i++) {
@@ -20,8 +23,6 @@ function shuffle(a) {
     return a;
 
 }
-
-
 
 (function () {
 
@@ -42,9 +43,6 @@ function shuffle(a) {
 
 })();
 
-
-let openCards = [];
-
 function getSrc(el) {
 
     let imgSrc = el.src;
@@ -64,7 +62,7 @@ function revealImage() {
 
 
 }
-let counter = 0;
+
 function checkMatch() {
 
     if (openCards.length == 2 && openCards[0].length == openCards[1].length) {
@@ -96,7 +94,6 @@ function checkMatch() {
 
 
 }
-
 
 
 function unmatch() {
