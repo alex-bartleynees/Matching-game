@@ -1,13 +1,13 @@
-var cards = [
+const images = [
     "./images/Bud-Powell.jpg", "./images/Hank-Mobley.jpg", "./images/Herbie-Hancock123.jpg", "./images/Jackie-McLean1234567.jpg", "./images/JohnnyGriffin.jpg", "./images/SonnyRollins.jpg", "./images/TheloniousMonk.jpg", "./images/Wayne-Shorter23.jpg", "./images/Bud-Powell.jpg", "./images/Hank-Mobley.jpg", "./images/Herbie-Hancock123.jpg", "./images/Jackie-McLean1234567.jpg", "./images/JohnnyGriffin.jpg", "./images/SonnyRollins.jpg", "./images/TheloniousMonk.jpg", "./images/Wayne-Shorter23.jpg"]
 
 
-var card = document.getElementsByClassName("card");
+const card = document.getElementsByClassName("card");
 for (let i = 0; i < card.length; i++) {
     card[i].addEventListener("click", revealImage);
 }
 
-var resetButton = document.getElementById("reset");
+const resetButton = document.getElementById("reset");
 resetButton.addEventListener("click", reset);
 
 function shuffle(a) {
@@ -21,14 +21,14 @@ function shuffle(a) {
 
 
 
-function startGame() {
+(function () {
 
-    shuffle(cards);
-    var imageIndex = -3;
+    shuffle(images);
+    let imageIndex = -3;
     let div = document.querySelectorAll("div");
     for (let i = 0; i < div.length; i++) {
-        var img = document.createElement("img");
-        img.src = cards[imageIndex];
+        let img = document.createElement("img");
+        img.src = images[imageIndex];
         img.setAttribute("onclick", "getSrc(this)");
         let classes = div[i].classList;
         let result = classes.contains("card");
@@ -38,38 +38,38 @@ function startGame() {
         imageIndex++;
     }
 
-}
-startGame();
+})();
 
-var newArray = [];
+
+let newArray = [];
 
 function getSrc(el) {
 
-    var imgSrc = el.src;
+    let imgSrc = el.src;
     newArray.push(imgSrc);
     if (newArray.length > 2) {
         newArray = [el.src];
     }
-    console.log(newArray);
+
 }
 
 function revealImage() {
-   
+
     this.classList.add("open")
     this.classList.remove("disabled")
-    
+
     checkMatch();
 
 
 }
-var counter = 0;
+let counter = 0;
 function checkMatch() {
 
     if (newArray.length == 2 && newArray[0].length == newArray[1].length) {
         newArray = [];
         let div = document.querySelectorAll("div");
         counter++
-        var moves = document.getElementById("moves")
+        let moves = document.getElementById("moves")
         moves.innerHTML = "Moves: " + counter;
 
         for (let i = 0; i < div.length; i++) {
@@ -80,7 +80,7 @@ function checkMatch() {
                 div[i].classList.add("match")
                 div[i].classList.remove("open");
                 div[i].removeEventListener("click", revealImage);
-                
+
             }
 
         }
@@ -88,7 +88,6 @@ function checkMatch() {
     } else if (newArray.length == 2) {
         unmatched();
         counter++
-        var moves = document.getElementById("moves")
         moves.innerHTML = "Moves: " + counter;
 
     }
@@ -114,14 +113,13 @@ function unmatched() {
 }
 
 
-function hideImages() {
-    var elements = document.getElementsByClassName("card")
+(function () {
+    const elements = document.getElementsByClassName("card")
     for (let i = 0; i < elements.length; i++) {
         elements[i].classList.add("disabled");
     }
-}
+})();
 
-hideImages();
 
 function reset() {
     location.reload();
