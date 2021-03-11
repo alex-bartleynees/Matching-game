@@ -86,7 +86,7 @@ function checkMatch() {
         }
         setTimeout(function () { alert("Match!") }, 500);
     } else if (newArray.length == 2) {
-        unmatched();
+        unmatch();
         counter++
         moves.innerHTML = "Moves: " + counter;
 
@@ -97,7 +97,7 @@ function checkMatch() {
 
 
 
-function unmatched() {
+function unmatch() {
 
     newArray = [];
     let div = document.querySelectorAll("div");
