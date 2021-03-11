@@ -63,15 +63,23 @@ function revealImage() {
 
 }
 
+
+function count (num) {
+  
+    let div = document.querySelectorAll("div");
+    let moves = document.getElementById("moves");
+    let newCount = num + 1;
+    counter = newCount;
+    return moves.innerHTML = "Moves: " + newCount;
+
+}
+
 function checkMatch() {
 
     if (openCards.length == 2 && openCards[0].length == openCards[1].length) {
         openCards = [];
+        count(counter);
         let div = document.querySelectorAll("div");
-        counter++
-        let moves = document.getElementById("moves")
-        moves.innerHTML = "Moves: " + counter;
-
         for (let i = 0; i < div.length; i++) {
             let classes = div[i].classList;
             let result = classes.contains("open");
@@ -87,9 +95,7 @@ function checkMatch() {
         setTimeout(function () { alert("Match!") }, 500);
     } else if (openCards.length == 2) {
         unmatch();
-        counter++
-        moves.innerHTML = "Moves: " + counter;
-
+        count(counter);
     }
 
 
