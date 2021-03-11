@@ -41,14 +41,14 @@ function shuffle(a) {
 })();
 
 
-let newArray = [];
+let openCards = [];
 
 function getSrc(el) {
 
     let imgSrc = el.src;
-    newArray.push(imgSrc);
-    if (newArray.length > 2) {
-        newArray = [el.src];
+    openCards.push(imgSrc);
+    if (openCards.length > 2) {
+        openCards = [el.src];
     }
 
 }
@@ -65,8 +65,8 @@ function revealImage() {
 let counter = 0;
 function checkMatch() {
 
-    if (newArray.length == 2 && newArray[0].length == newArray[1].length) {
-        newArray = [];
+    if (openCards.length == 2 && openCards[0].length == openCards[1].length) {
+        openCards = [];
         let div = document.querySelectorAll("div");
         counter++
         let moves = document.getElementById("moves")
@@ -85,7 +85,7 @@ function checkMatch() {
 
         }
         setTimeout(function () { alert("Match!") }, 500);
-    } else if (newArray.length == 2) {
+    } else if (openCards.length == 2) {
         unmatch();
         counter++
         moves.innerHTML = "Moves: " + counter;
@@ -99,7 +99,7 @@ function checkMatch() {
 
 function unmatch() {
 
-    newArray = [];
+    openCards = [];
     let div = document.querySelectorAll("div");
     for (let i = 0; i < div.length; i++) {
         let classes = div[i].classList;
